@@ -196,7 +196,7 @@ export function AboutContent() {
         </ul>
         <Link
           href="/contact"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-wheat-500 px-6 py-3 font-semibold text-forest-950 transition hover:bg-wheat-400"
+          className="mt-6 inline-flex items-center gap-2 rounded-md bg-wheat-500 px-6 py-3 font-semibold text-forest-950 transition hover:bg-wheat-400"
         >
           Contact us <Arrow className="h-4 w-4" />
         </Link>

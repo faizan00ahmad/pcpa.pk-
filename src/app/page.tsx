@@ -3,7 +3,15 @@ import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { Arrow, Clock } from "@/components/Icons";
 import { Reveal } from "@/components/Reveal";
+import { committee } from "@/data/committee";
 import { introduction, leaders, news, slides } from "@/data/site";
+
+const facts = [
+  { value: String(leaders.length), label: "Office bearers" },
+  { value: String(committee.length), label: "Executive committee seats" },
+  { value: "2", label: "Offices: Multan & Lahore" },
+  { value: "2026–28", label: "Current election cycle" },
+];
 
 const about = [
   { label: "About Us", href: "/about", n: "01" },
@@ -14,17 +22,55 @@ const about = [
 export default function Home() {
   return (
     <>
-      <Hero slides={slides} />
+      {/* Hero: statement + photo slider */}
+      <section className="grid bg-forest-900 lg:grid-cols-[5fr_7fr]">
+        <div className="grain relative flex flex-col justify-center px-6 py-12 text-white sm:px-10 lg:py-16 lg:pl-[max(2rem,calc((100vw-80rem)/2+1.5rem))] lg:pr-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-wheat-400">Pakistan Crop Protection Association</p>
+          <h1 className="mt-5 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+            Representing Pakistan&apos;s crop protection industry
+          </h1>
+          <p className="mt-5 max-w-lg text-lg leading-relaxed text-white/75">
+            A member association supporting the growth of Pakistan&apos;s agriculture sector, headquartered in Multan.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href="/docs/MEMBERSHIP-APPLICATION-2026-2027.docx"
+              className="inline-flex items-center gap-2 rounded-md bg-wheat-500 px-6 py-3 font-semibold text-forest-950 transition hover:bg-wheat-400"
+            >
+              Become a Member <Arrow className="h-4 w-4" />
+            </a>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-md border border-white/30 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
+        <Hero slides={slides} fill />
+      </section>
+
+      {/* Facts strip (all figures come from the site's own data) */}
+      <section className="border-b border-line bg-white">
+        <dl className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-line px-4 sm:px-6 lg:grid-cols-4">
+          {facts.map((f) => (
+            <div key={f.label} className="px-4 py-7 text-center sm:px-6">
+              <dd className="font-display text-3xl font-extrabold text-forest-800 sm:text-4xl">{f.value}</dd>
+              <dt className="mt-1 text-xs font-semibold uppercase tracking-wider text-muted">{f.label}</dt>
+            </div>
+          ))}
+        </dl>
+      </section>
 
       {/* Introduction */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <Reveal className="grid items-start gap-10 lg:grid-cols-[1fr_2fr]">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-wheat-500">Pakistan Crop Protection Association</p>
-            <h2 className="mt-4 text-4xl font-semibold text-forest-900 sm:text-5xl">{introduction.title}</h2>
-            <div className="mt-6 h-1 w-16 rounded-full bg-wheat-500" />
+            <h2 className="mt-4 text-4xl text-forest-900 sm:text-5xl">{introduction.title}</h2>
+            <div className="mt-6 h-1 w-16 bg-wheat-500" />
           </div>
-          <p className="border-l-4 border-wheat-400 pl-6 font-display text-xl leading-relaxed text-ink/85 sm:text-2xl">
+          <p className="border-l-4 border-wheat-400 pl-6 text-xl leading-relaxed text-ink/80 sm:text-2xl">
             {introduction.body}
           </p>
         </Reveal>

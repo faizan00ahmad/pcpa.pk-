@@ -38,7 +38,7 @@ export function CommitteeTable({ rows }: { rows: Member[] }) {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search name, company, area…"
-            className="w-full rounded-full border border-line bg-white py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-forest-600 focus:ring-2 focus:ring-forest-600/20"
+            className="w-full rounded-md border border-line bg-white py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-forest-600 focus:ring-2 focus:ring-forest-600/20"
           />
         </label>
         <div className="flex items-center gap-2" role="group" aria-label="Filter by class">
@@ -48,7 +48,7 @@ export function CommitteeTable({ rows }: { rows: Member[] }) {
               type="button"
               onClick={() => setCls(c)}
               aria-pressed={cls === c}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+              className={`rounded-md px-4 py-2 text-sm font-medium transition ${
                 cls === c ? "bg-forest-800 text-white" : "bg-white text-ink/70 ring-1 ring-line hover:bg-forest-50"
               }`}
             >

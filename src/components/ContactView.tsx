@@ -96,7 +96,7 @@ export function ContactView() {
           </div>
           <button
             type="submit"
-            className="mt-6 w-full rounded-full bg-wheat-500 px-6 py-3 font-semibold text-forest-950 transition hover:bg-wheat-400"
+            className="mt-6 w-full rounded-md bg-wheat-500 px-6 py-3 font-semibold text-forest-950 transition hover:bg-wheat-400"
           >
             Submit
           </button>

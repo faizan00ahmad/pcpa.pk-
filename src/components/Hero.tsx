@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronRight } from "./Icons";
 
-export function Hero({ slides }: { slides: string[] }) {
+export function Hero({ slides, fill = false }: { slides: string[]; fill?: boolean }) {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
   const touchX = useRef<number | null>(null);
@@ -22,7 +22,7 @@ export function Hero({ slides }: { slides: string[] }) {
     <section
       aria-roledescription="carousel"
       aria-label="PCPA events"
-      className="relative isolate overflow-hidden bg-forest-950"
+      className={`relative isolate overflow-hidden bg-forest-950 ${fill ? "h-full" : ""}`}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
@@ -33,7 +33,13 @@ export function Hero({ slides }: { slides: string[] }) {
         touchX.current = null;
       }}
     >
-      <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] md:aspect-auto md:h-[68vh] md:max-h-[720px]">
+      <div
+        className={
+          fill
+            ? "relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[520px]"
+            : "relative aspect-[4/3] w-full sm:aspect-[16/9] md:aspect-auto md:h-[68vh] md:max-h-[720px]"
+        }
+      >
         {slides.map((src, idx) => {
           // Mount only the current, next and previous slide so the page doesn't fetch all 17 photos up front.
           const near = idx === i || idx === (i + 1) % n || idx === (i - 1 + n) % n;

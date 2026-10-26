@@ -16,8 +16,14 @@
   --color-ink: #14221c;
   --color-muted: #5b6b63;
   --color-line: #e3e8e2;
-  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-display: var(--font-manrope), system-ui, sans-serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  /* Corporate look: crisper, less rounded corners */
+  --radius-lg: 0.375rem;
+  --radius-xl: 0.375rem;
+  --radius-2xl: 0.5rem;
+  --radius-3xl: 0.5rem;
 }
 
 html { scroll-behavior: smooth; }
@@ -27,7 +33,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
-h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: -0.01em; }
+h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: -0.02em; font-weight: 700; }
 
 :focus-visible { outline: 2px solid var(--color-wheat-500); outline-offset: 2px; border-radius: 4px; }
 

@@ -24,7 +24,7 @@ export function DocumentArchive() {
           <a
             key={g.id}
             href={`#${g.id}`}
-            className="rounded-full bg-white px-4 py-2 text-sm font-medium text-ink/75 ring-1 ring-line transition hover:bg-forest-800 hover:text-white"
+            className="rounded-md bg-white px-4 py-2 text-sm font-medium text-ink/75 ring-1 ring-line transition hover:bg-forest-800 hover:text-white"
           >
             {g.title}
           </a>

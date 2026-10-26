@@ -93,7 +93,7 @@ export function Header() {
                 <li key={item.label} className="group/item relative">
                   <NavLink
                     item={item}
-                    className={`flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors ${
+                    className={`flex items-center gap-1 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                       isActive(item)
                         ? "bg-forest-800 text-white"
                         : "text-ink/80 hover:bg-forest-50 hover:text-forest-800"
@@ -113,7 +113,7 @@ export function Header() {
             onClick={() => setOpen(true)}
             aria-label="Open menu"
             aria-expanded={open}
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-forest-800 text-white shadow-sm transition hover:bg-forest-700"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-md bg-forest-800 text-white shadow-sm transition hover:bg-forest-700"
           >
             <Menu />
           </button>
