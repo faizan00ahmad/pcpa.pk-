@@ -1,10 +1,18 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "./Icons";
 
 export function PageHeader({ title, eyebrow }: { title: string; eyebrow?: string }) {
   return (
-    <section className="grain relative overflow-hidden bg-forest-900 text-white">
-      <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-forest-700/50 blur-3xl" />
+    <section className="grain relative isolate overflow-hidden bg-forest-900 text-white">
+      <Image
+        src="/images/slider/slide-08.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="-z-10 object-cover opacity-[0.14] mix-blend-luminosity"
+      />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-forest-950 via-forest-900/90 to-forest-900/60" />
       <div className="pointer-events-none absolute -bottom-32 left-1/4 h-64 w-64 rounded-full bg-wheat-500/15 blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
         <nav aria-label="Breadcrumb">

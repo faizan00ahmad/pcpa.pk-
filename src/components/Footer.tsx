@@ -7,9 +7,29 @@ import { socialIcons } from "./Icons";
 
 export function Footer() {
   return (
-    <footer className="grain relative mt-24 bg-forest-900 text-white/80">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
-        <div className="flex flex-col items-start justify-between gap-8 border-b border-white/10 pb-10 md:flex-row md:items-center">
+    <footer className="grain relative mt-32 bg-forest-900 text-white/80">
+      <div className="mx-auto max-w-7xl px-4 pb-14 sm:px-6">
+        <div className="-translate-y-1/2 rounded-2xl bg-wheat-500 px-7 py-8 text-forest-950 shadow-xl shadow-forest-950/20 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:px-10">
+          <div>
+            <p className="text-2xl font-extrabold leading-tight sm:text-3xl">Join the Pakistan Crop Protection Association</p>
+            <p className="mt-1.5 text-forest-950/75">Download the 2026-2027 membership form or get in touch with the secretariat.</p>
+          </div>
+          <div className="mt-5 flex shrink-0 flex-wrap gap-3 sm:mt-0">
+            <a
+              href="/docs/MEMBERSHIP-APPLICATION-2026-2027.docx"
+              className="inline-flex items-center gap-2 rounded-md bg-forest-900 px-6 py-3 font-semibold text-white transition hover:bg-forest-800"
+            >
+              Membership Form
+            </a>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-md border border-forest-950/30 px-6 py-3 font-semibold transition hover:bg-forest-950/10"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
+        <div className="-mt-8 flex flex-col items-start justify-between gap-8 border-b border-white/10 pb-10 md:flex-row md:items-center">
           <Link href="/" className="inline-flex items-center gap-4" aria-label="PCPA home">
             <span className="rounded-2xl bg-white p-2.5">
               <Image src="/images/brand/favicon.png" alt="PCPA" width={56} height={56} className="h-14 w-14 object-contain" />

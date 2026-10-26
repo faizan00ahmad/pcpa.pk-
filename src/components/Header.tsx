@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { menu, type MenuItem } from "@/data/menu";
-import { Chevron, Menu } from "./Icons";
+import { Arrow, Chevron, Menu } from "./Icons";
 import { NavLink } from "./NavLink";
 import { SideDrawer } from "./SideDrawer";
 
@@ -30,15 +30,63 @@ function Tree({ items, depth = 0 }: { items: MenuItem[]; depth?: number }) {
   );
 }
 
-function Flyout({ items, alignRight }: { items: MenuItem[]; alignRight: boolean }) {
+const show =
+  "invisible absolute top-full z-50 pt-2 opacity-0 transition duration-150 group-hover/item:visible group-hover/item:opacity-100 group-focus-within/item:visible group-focus-within/item:opacity-100";
+
+function ViewAll({ href, label }: { href: string; label: string }) {
   return (
-    <div
-      className={`invisible absolute top-full z-50 w-[23rem] max-w-[90vw] pt-2 opacity-0 transition duration-150 group-hover/item:visible group-hover/item:opacity-100 group-focus-within/item:visible group-focus-within/item:opacity-100 ${
-        alignRight ? "right-0" : "left-0"
-      }`}
+    <Link
+      href={href}
+      className="mt-1 flex items-center justify-between rounded-md bg-forest-50 px-3 py-2.5 text-sm font-semibold text-forest-800 transition hover:bg-forest-100"
     >
-      <div className="max-h-[75vh] overflow-y-auto rounded-xl border border-line bg-white p-2 shadow-xl shadow-forest-950/10">
-        <Tree items={items} />
+      View all {label} <Arrow className="h-4 w-4" />
+    </Link>
+  );
+}
+
+function Flyout({ item, alignRight }: { item: MenuItem; alignRight: boolean }) {
+  return (
+    <div className={`${show} w-[23rem] max-w-[90vw] ${alignRight ? "right-0" : "left-0"}`}>
+      <div className="max-h-[75vh] overflow-y-auto rounded-xl border border-line border-t-2 border-t-wheat-500 bg-white p-2 shadow-xl shadow-forest-950/10">
+        <Tree items={item.children!} />
+        {item.href && <ViewAll href={item.href} label={item.label} />}
+      </div>
+    </div>
+  );
+}
+
+/** Wide, grouped panel for the About Us menu. Same items as the menu tree, just grouped by theme. */
+const aboutColumns: { title: string; labels: string[] }[] = [
+  {
+    title: "The Association",
+    labels: ["Mission", "Vision", "The Association", "Memorandum and Articles of Association"],
+  },
+  {
+    title: "Leadership & Committees",
+    labels: ["Office Bearers", "Central Executive Committee", "Committee and working Groups"],
+  },
+  { title: "Meetings", labels: ["Minutes of the Meetings"] },
+];
+
+function MegaMenu({ item }: { item: MenuItem }) {
+  const kids = item.children!;
+  return (
+    <div className={`${show} left-0 w-[min(54rem,92vw)]`}>
+      <div className="max-h-[78vh] overflow-y-auto rounded-xl border border-line border-t-2 border-t-wheat-500 bg-white p-5 shadow-xl shadow-forest-950/10">
+        <div className="grid gap-6 md:grid-cols-3">
+          {aboutColumns.map((col) => (
+            <div key={col.title}>
+              <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-wheat-500">{col.title}</p>
+              <Tree items={kids.filter((k) => col.labels.includes(k.label))} />
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 flex items-center justify-between rounded-lg bg-forest-900 px-5 py-3.5 text-white">
+          <span className="text-sm text-white/80">Pakistan Crop Protection Association</span>
+          <Link href={item.href!} className="inline-flex items-center gap-2 text-sm font-semibold text-wheat-400 hover:text-white">
+            About PCPA <Arrow className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -102,7 +150,12 @@ export function Header() {
                     {item.label}
                     {item.children && <Chevron className="h-3.5 w-3.5 opacity-60" />}
                   </NavLink>
-                  {item.children && <Flyout items={item.children} alignRight={idx >= 3} />}
+                  {item.children &&
+                    (item.label === "About Us" ? (
+                      <MegaMenu item={item} />
+                    ) : (
+                      <Flyout item={item} alignRight={idx >= 3} />
+                    ))}
                 </li>
               ))}
             </ul>

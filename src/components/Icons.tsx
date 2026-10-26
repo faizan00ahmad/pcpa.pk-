@@ -63,6 +63,24 @@ export const Sprout = (p: P) => (
 export const Leaf = (p: P) => (
   <svg {...base(p)}><path d="M5 19C5 10 10 5 20 4c0 10-5 15-14 15zM5 19l8-8" /></svg>
 );
+export const Users = (p: P) => (
+  <svg {...base(p)}>
+    <circle cx="9" cy="8" r="3.2" />
+    <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 5.2a3.2 3.2 0 0 1 0 5.6M18 14.3c1.8.8 3 2.6 3 4.7" />
+  </svg>
+);
+export const Vote = (p: P) => (
+  <svg {...base(p)}>
+    <path d="M4 14h16l-1.5 6h-13zM9 14l-2-6 6-4 4 6-2 4" />
+    <path d="M10 9l3 2" />
+  </svg>
+);
+export const Archive = (p: P) => (
+  <svg {...base(p)}>
+    <rect x="3" y="4" width="18" height="4" rx="1" />
+    <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8M10 13h4" />
+  </svg>
+);
 export const Clock = (p: P) => (
   <svg {...base(p)}><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></svg>
 );

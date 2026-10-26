@@ -5,6 +5,7 @@ import { CommitteeTable } from "@/components/CommitteeTable";
 import { ContactView } from "@/components/ContactView";
 import { DocumentArchive } from "@/components/DocumentArchive";
 import { EmptyState } from "@/components/EmptyState";
+import { HubPage } from "@/components/HubPages";
 import { PageHeader } from "@/components/PageHeader";
 import { PdfViewer } from "@/components/PdfViewer";
 import { committee, committeeSubtitle, committeeTitle } from "@/data/committee";
@@ -56,6 +57,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       break;
     case "vision":
       body = <VisionContent />;
+      break;
+    case "members-directory":
+    case "election-2026-2028":
+    case "resource-centre":
+    case "multimedia":
+      body = <HubPage href={page.href} />;
       break;
     case "document-archive":
       body = <DocumentArchive />;

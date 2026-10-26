@@ -55,6 +55,7 @@ export const menu: MenuItem[] = [
   },
   {
     label: "Members Directory",
+    href: "/members-directory",
     children: [
       {
         label: "Membership Form 2026-2027",
@@ -70,6 +71,7 @@ export const menu: MenuItem[] = [
   },
   {
     label: "Election 2026-2028",
+    href: "/election-2026-2028",
     children: [
       {
         label: "Announcement Of Election Schedule 2026-2028",
@@ -91,6 +93,7 @@ export const menu: MenuItem[] = [
   },
   {
     label: "Resource Centre",
+    href: "/resource-centre",
     children: [
       {
         label: "Press Releases",
@@ -103,6 +106,7 @@ export const menu: MenuItem[] = [
   },
   {
     label: "Multimedia",
+    href: "/multimedia",
     children: [
       { label: "Photo Gallery", href: "/photo-gallery" },
       { label: "Video Gallery", href: "/video-gallery" },

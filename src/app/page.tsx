@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "@/components/Hero";
-import { Arrow, Clock } from "@/components/Icons";
+import { Archive, Arrow, Clock, FileIcon, Users, Vote } from "@/components/Icons";
 import { Reveal } from "@/components/Reveal";
 import { committee } from "@/data/committee";
 import { introduction, leaders, news, slides } from "@/data/site";
@@ -11,6 +11,13 @@ const facts = [
   { value: String(committee.length), label: "Executive committee seats" },
   { value: "2", label: "Offices: Multan & Lahore" },
   { value: "2026–28", label: "Current election cycle" },
+];
+
+const quick = [
+  { title: "Membership", text: "Forms, member directories and the annual subscription.", href: "/members-directory", icon: Users },
+  { title: "Election 2026-2028", text: "Schedule, commission and final voter lists.", href: "/election-2026-2028", icon: Vote },
+  { title: "Office Bearers", text: "The current leadership and executive committee.", href: "/office-bearers", icon: FileIcon },
+  { title: "Document Archive", text: "Past lists, forms, schedules and reference laws.", href: "/document-archive", icon: Archive },
 ];
 
 const about = [
@@ -60,6 +67,31 @@ export default function Home() {
             </div>
           ))}
         </dl>
+      </section>
+
+      {/* Quick access */}
+      <section className="mx-auto -mt-px max-w-7xl px-4 pt-16 sm:px-6">
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {quick.map((q, i) => (
+            <li key={q.href}>
+              <Reveal delay={i * 70}>
+                <Link
+                  href={q.href}
+                  className="group flex h-full flex-col rounded-2xl bg-white p-6 ring-1 ring-line transition hover:-translate-y-1 hover:shadow-xl hover:shadow-forest-950/10"
+                >
+                  <span className="grid h-11 w-11 place-items-center rounded-lg bg-forest-800 text-white transition group-hover:bg-wheat-500 group-hover:text-forest-950">
+                    <q.icon />
+                  </span>
+                  <span className="mt-5 text-lg font-bold text-forest-900">{q.title}</span>
+                  <span className="mt-1.5 flex-1 text-sm leading-relaxed text-muted">{q.text}</span>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-forest-700">
+                    Open <Arrow className="h-4 w-4 transition group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* Introduction */}
