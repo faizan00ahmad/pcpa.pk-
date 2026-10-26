@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { AboutContent, MissionContent, VisionContent } from "@/components/AboutPages";
 import { CommitteeTable } from "@/components/CommitteeTable";
 import { ContactView } from "@/components/ContactView";
 import { DocumentArchive } from "@/components/DocumentArchive";
@@ -46,6 +47,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       break;
     case "contact":
       body = <ContactView />;
+      break;
+    case "about":
+      body = <AboutContent />;
+      break;
+    case "mission":
+      body = <MissionContent />;
+      break;
+    case "vision":
+      body = <VisionContent />;
       break;
     case "document-archive":
       body = <DocumentArchive />;
