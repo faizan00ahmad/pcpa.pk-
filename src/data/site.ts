@@ -12,11 +12,9 @@ export const introduction = {
   body: "The Ministry of National Food Security & Research is mainly responsible for policy formulation, economic coordination and planning in respect of food grain and agriculture. It also includes procurement of food grains, fertilizer, import price stabilization of agriculture produce, international liaison, economic studies for framing agricultural policies.",
 };
 
-export const slides = Array.from({ length: 17 }, (_, i) => {
-  const n = String(i + 1).padStart(2, "0");
-  const ext = i < 5 ? "jpeg" : "jpg";
-  return `/images/slider/slide-${n}.${ext}`;
-});
+// Hero order: sharpest photos first (the hero is full-screen); lower-resolution ones follow.
+const slideOrder = ["07.jpg", "06.jpg", "08.jpg", "09.jpg", "11.jpg", "14.jpg", "15.jpg", "16.jpg", "10.jpg", "12.jpg", "13.jpg", "17.jpg", "04.jpeg", "03.jpeg", "05.jpeg", "01.jpeg", "02.jpeg"];
+export const slides = slideOrder.map((f) => `/images/slider/slide-${f}`);
 
 export const leaders = [
   { name: "Muhammad Mushtaq Ahmed", title: "Chairman", image: "/images/leaders/mushtaq-ahmed.jpeg" },

@@ -86,7 +86,7 @@ export function IntroSplash() {
             </g>
           </svg>
           {/* real logo resolves in */}
-          <div className="sp-real absolute inset-0 grid place-items-center rounded-2xl bg-white p-3 shadow-2xl">
+          <div className="sp-real absolute inset-0 grid place-items-center rounded-2xl bg-[#ffffff] p-3 shadow-2xl">
             <Image src="/images/brand/favicon.png" alt="" width={280} height={280} priority className="h-full w-full object-contain" />
           </div>
         </div>

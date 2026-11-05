@@ -29,8 +29,8 @@ export function ScrollProgress() {
   }, []);
 
   return (
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] bg-white/10" aria-hidden>
-      <div ref={bar} className="h-full origin-left bg-wheat-400 will-change-transform rtl:origin-right" style={{ transform: "scaleX(0)" }} />
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] bg-transparent" aria-hidden>
+      <div ref={bar} className="h-full origin-left bg-[var(--accent)] will-change-transform rtl:origin-right" style={{ transform: "scaleX(0)" }} />
     </div>
   );
 }

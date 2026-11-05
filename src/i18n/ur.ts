@@ -84,6 +84,16 @@ export const ur: Record<string, string> = {
   "Jump to a section": "سیکشن پر جائیں",
 
   // Hero & home
+  Explore: "دیکھیں",
+  "Member classes": "ممبر کلاسیں",
+  "Committee seats": "کمیٹی کی نشستیں",
+  Offices: "دفاتر",
+  "Election Schedule": "انتخابی شیڈول",
+  "Election Commission": "الیکشن کمیشن",
+  "Voters Lists": "ووٹر فہرستیں",
+  "Corporate Members": "کارپوریٹ ممبران",
+  "Associate Members": "ایسوسی ایٹ ممبران",
+  Memorandum: "میمورنڈم",
   "Representing Pakistan's crop protection industry": "پاکستان کی کراپ پروٹیکشن انڈسٹری کی نمائندگی",
   "A member association supporting the growth of Pakistan's agriculture sector, headquartered in Multan.":
     "ایک ممبر ایسوسی ایشن جو پاکستان کے زرعی شعبے کی ترقی کے لیے کوشاں ہے، صدر دفتر ملتان میں ہے۔",

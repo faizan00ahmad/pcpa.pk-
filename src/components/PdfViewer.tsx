@@ -12,7 +12,7 @@ export function PdfViewer({ src, title }: { src: string; title: string }) {
         <a
           href={src}
           download
-          className="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-forest-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-forest-700"
+          className="btn btn-primary shrink-0 !px-4 !py-2 !text-sm"
         >
           <Download className="h-4 w-4" /> <T>Download</T>
         </a>

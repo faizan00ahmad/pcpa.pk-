@@ -205,7 +205,7 @@ export function AboutContent() {
         </ul>
       </section>
 
-      <section className="rounded-lg bg-forest-900 p-8 text-white sm:p-10">
+      <section className="rounded-[20px] bg-forest-900 p-8 text-white sm:p-10">
         <h2 className="text-2xl">
           <T>Get in touch</T>
         </h2>
@@ -225,7 +225,7 @@ export function AboutContent() {
         </ul>
         <Link
           href="/contact"
-          className="mt-6 inline-flex items-center gap-2 rounded bg-wheat-500 px-6 py-3 font-bold text-forest-950 transition hover:bg-wheat-400"
+          className="btn mt-6"
         >
           <T>Contact Us</T> <Arrow className="h-4 w-4 rtl:rotate-180" />
         </Link>
