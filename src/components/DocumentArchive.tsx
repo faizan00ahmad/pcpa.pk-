@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { archive } from "@/data/archive";
 import { Download, FileIcon } from "./Icons";
+import { T } from "./T";
 
 function size(file: string) {
   try {
@@ -17,7 +18,7 @@ export function DocumentArchive() {
   return (
     <div>
       <p className="mb-8 text-muted">
-        {total} documents from the PCPA file library, grouped by topic.
+        {total} <T>documents from the PCPA file library, grouped by topic.</T>
       </p>
       <nav aria-label="Archive sections" className="mb-10 flex flex-wrap gap-2">
         {archive.map((g) => (
@@ -26,14 +27,14 @@ export function DocumentArchive() {
             href={`#${g.id}`}
             className="rounded-md bg-white px-4 py-2 text-sm font-medium text-ink/75 ring-1 ring-line transition hover:bg-forest-800 hover:text-white"
           >
-            {g.title}
+            <T>{g.title}</T>
           </a>
         ))}
       </nav>
       <div className="space-y-12">
         {archive.map((g) => (
           <section key={g.id} id={g.id} className="scroll-mt-28">
-            <h2 className="text-2xl font-semibold text-forest-900">{g.title}</h2>
+            <h2 className="text-2xl text-forest-900"><T>{g.title}</T></h2>
             {g.blurb && <p className="mt-1 text-sm text-muted">{g.blurb}</p>}
             <ul className="mt-5 grid gap-3 md:grid-cols-2">
               {g.docs.map((doc) => (
@@ -42,9 +43,9 @@ export function DocumentArchive() {
                     href={doc.file}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex h-full items-start gap-4 rounded-2xl bg-white p-4 ring-1 ring-line transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-forest-950/10"
+                    className="group flex h-full items-start gap-4 rounded-lg bg-white p-4 ring-1 ring-line transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-forest-950/10"
                   >
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-forest-50 text-wheat-500 transition group-hover:bg-forest-800 group-hover:text-white">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded bg-forest-50 text-wheat-500 transition group-hover:bg-forest-800 group-hover:text-white">
                       <FileIcon />
                     </span>
                     <span className="min-w-0 flex-1">

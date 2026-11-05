@@ -3,7 +3,9 @@ import path from "node:path";
 import Link from "next/link";
 import { childrenOf, type MenuItem } from "@/data/menu";
 import { Arrow, Download, FileIcon } from "./Icons";
+import { CardCarousel } from "./CardCarousel";
 import { Reveal } from "./Reveal";
+import { T } from "./T";
 
 function fileSize(src: string) {
   try {
@@ -22,13 +24,13 @@ function DocCard({ item, index }: { item: MenuItem; index: number }) {
         href={f.src}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex h-full items-start gap-4 rounded-2xl bg-white p-5 ring-1 ring-line transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-forest-950/10"
+        className="group flex h-full items-start gap-4 rounded-lg bg-white p-5 ring-1 ring-line transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-forest-950/10"
       >
-        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-forest-50 text-wheat-500 transition group-hover:bg-forest-800 group-hover:text-white">
+        <span className="grid h-12 w-12 shrink-0 place-items-center rounded bg-forest-50 text-wheat-500 transition group-hover:bg-forest-800 group-hover:text-white">
           <FileIcon />
         </span>
         <span className="min-w-0 flex-1">
-          <span className="block font-semibold leading-snug text-forest-900">{item.label}</span>
+          <span className="block font-semibold leading-snug text-forest-900"><T>{item.label}</T></span>
           <span className="mt-1.5 block text-xs font-medium uppercase tracking-wide text-muted">
             {f.kind}
             {fileSize(f.src) && ` · ${fileSize(f.src)}`}
@@ -45,10 +47,10 @@ function LinkCard({ item, index }: { item: MenuItem; index: number }) {
     <Reveal delay={(index % 3) * 80}>
       <Link
         href={item.href!}
-        className="group flex h-full items-center justify-between gap-4 rounded-2xl bg-white p-6 ring-1 ring-line transition hover:-translate-y-0.5 hover:bg-forest-50 hover:shadow-lg hover:shadow-forest-950/10"
+        className="group flex h-full items-center justify-between gap-4 rounded-lg bg-white p-6 ring-1 ring-line transition hover:-translate-y-0.5 hover:bg-forest-50 hover:shadow-lg hover:shadow-forest-950/10"
       >
-        <span className="text-lg font-semibold text-forest-900">{item.label}</span>
-        <Arrow className="h-5 w-5 shrink-0 text-forest-600 transition group-hover:translate-x-1" />
+        <span className="text-lg font-semibold text-forest-900"><T>{item.label}</T></span>
+        <Arrow className="h-5 w-5 shrink-0 text-forest-600 transition group-hover:translate-x-1 rtl:rotate-180" />
       </Link>
     </Reveal>
   );
@@ -56,8 +58,8 @@ function LinkCard({ item, index }: { item: MenuItem; index: number }) {
 
 function Related({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (
-    <aside className="mt-14 rounded-2xl bg-forest-900 p-7 text-white sm:p-9">
-      <h2 className="text-xl font-bold">{title}</h2>
+    <aside className="mt-14 rounded-lg bg-forest-900 p-7 text-white sm:p-9">
+      <h2 className="text-xl font-bold"><T>{title}</T></h2>
       <ul className="mt-5 flex flex-wrap gap-3">
         {links.map((l) => (
           <li key={l.href}>
@@ -65,7 +67,7 @@ function Related({ title, links }: { title: string; links: { label: string; href
               href={l.href}
               className="inline-flex items-center gap-2 rounded-md border border-white/25 px-4 py-2.5 text-sm font-semibold transition hover:bg-white/10"
             >
-              {l.label} <Arrow className="h-4 w-4" />
+              <T>{l.label}</T> <Arrow className="h-4 w-4 rtl:rotate-180" />
             </Link>
           </li>
         ))}
@@ -74,8 +76,12 @@ function Related({ title, links }: { title: string; links: { label: string; href
   );
 }
 
-function Intro({ children }: { children: React.ReactNode }) {
-  return <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted">{children}</p>;
+function Intro({ children }: { children: string }) {
+  return (
+    <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted">
+      <T>{children}</T>
+    </p>
+  );
 }
 
 /** Landing page for a menu heading: its documents or sub-pages, plus related links. */
@@ -99,13 +105,22 @@ export function HubPage({ href }: { href: string }) {
       {href === "/multimedia" && <Intro>Photo and video galleries from PCPA events.</Intro>}
 
       {docs.length > 0 && (
-        <ul className="grid gap-4 md:grid-cols-2">
-          {docs.map((d, i) => (
-            <li key={d.label}>
-              <DocCard item={d} index={i} />
-            </li>
-          ))}
-        </ul>
+        <>
+          <div className="md:hidden">
+            <CardCarousel label="Documents" itemClass="w-[86%] sm:w-[60%]">
+              {docs.map((d, i) => (
+                <DocCard key={d.label} item={d} index={i} />
+              ))}
+            </CardCarousel>
+          </div>
+          <ul className="hidden gap-4 md:grid md:grid-cols-2">
+            {docs.map((d, i) => (
+              <li key={d.label}>
+                <DocCard item={d} index={i} />
+              </li>
+            ))}
+          </ul>
+        </>
       )}
 
       {pages.length > 0 && (

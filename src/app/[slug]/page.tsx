@@ -6,7 +6,7 @@ import { ContactView } from "@/components/ContactView";
 import { DocumentArchive } from "@/components/DocumentArchive";
 import { EmptyState } from "@/components/EmptyState";
 import { HubPage } from "@/components/HubPages";
-import { PageHeader } from "@/components/PageHeader";
+import { PageLayout } from "@/components/PageLayout";
 import { PdfViewer } from "@/components/PdfViewer";
 import { committee, committeeSubtitle, committeeTitle } from "@/data/committee";
 import { childrenOf, flattenPages } from "@/data/menu";
@@ -72,9 +72,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <>
-      <PageHeader title={page.label} />
-      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6">{body}</section>
-    </>
+    <PageLayout href={page.href} title={page.label}>
+      {body}
+    </PageLayout>
   );
 }

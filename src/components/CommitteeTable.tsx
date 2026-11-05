@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import type { Member } from "@/data/committee";
 import { Search } from "./Icons";
+import { useLang } from "./LanguageProvider";
 
 const cols = [
   ["SR #", "sr"],
@@ -16,6 +17,7 @@ const cols = [
 ] as const;
 
 export function CommitteeTable({ rows }: { rows: Member[] }) {
+  const { t } = useLang();
   const [q, setQ] = useState("");
   const [cls, setCls] = useState("All");
 
@@ -37,7 +39,7 @@ export function CommitteeTable({ rows }: { rows: Member[] }) {
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Search name, company, area…"
+            placeholder={t("Search name, company, area…")}
             className="w-full rounded-md border border-line bg-white py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-forest-600 focus:ring-2 focus:ring-forest-600/20"
           />
         </label>
@@ -52,7 +54,7 @@ export function CommitteeTable({ rows }: { rows: Member[] }) {
                 cls === c ? "bg-forest-800 text-white" : "bg-white text-ink/70 ring-1 ring-line hover:bg-forest-50"
               }`}
             >
-              {c}
+              {t(c)}
             </button>
           ))}
           <span className="ml-1 text-xs text-muted">{filtered.length} of {rows.length}</span>
@@ -60,7 +62,7 @@ export function CommitteeTable({ rows }: { rows: Member[] }) {
       </div>
 
       {/* Desktop table */}
-      <div className="hidden overflow-hidden rounded-2xl border border-line bg-white shadow-sm md:block">
+      <div className="hidden overflow-hidden rounded-lg border border-line bg-white shadow-sm md:block">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[900px] text-left text-sm">
             <thead className="bg-forest-900 text-[11px] font-semibold uppercase tracking-wider text-white">
@@ -91,7 +93,7 @@ export function CommitteeTable({ rows }: { rows: Member[] }) {
       {/* Mobile cards */}
       <ul className="space-y-3 md:hidden">
         {filtered.map((r) => (
-          <li key={r.sr} className="rounded-2xl border border-line bg-white p-4 shadow-sm">
+          <li key={r.sr} className="rounded-lg border border-line bg-white p-4 shadow-sm">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <p className="text-xs font-semibold text-muted">SR # {r.sr}</p>
@@ -111,7 +113,7 @@ export function CommitteeTable({ rows }: { rows: Member[] }) {
       </ul>
 
       {filtered.length === 0 && (
-        <p className="rounded-2xl bg-white p-8 text-center text-muted">No members match your search.</p>
+        <p className="rounded-lg bg-white p-8 text-center text-muted">No members match your search.</p>
       )}
     </div>
   );

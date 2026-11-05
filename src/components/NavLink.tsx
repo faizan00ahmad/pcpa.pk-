@@ -1,20 +1,23 @@
 import Link from "next/link";
 import type { MenuItem } from "@/data/menu";
 import { FileIcon } from "./Icons";
+import { T } from "./T";
 
 /** Renders a menu entry as a page link, a document link, or an inert label (original `#` items). */
 export function NavLink({
   item,
   className = "",
+  style,
   onNavigate,
   children,
 }: {
   item: MenuItem;
   className?: string;
+  style?: React.CSSProperties;
   onNavigate?: () => void;
   children?: React.ReactNode;
 }) {
-  const content = children ?? item.label;
+  const content = children ?? <T>{item.label}</T>;
   if (item.file) {
     return (
       <a
@@ -22,6 +25,7 @@ export function NavLink({
         target="_blank"
         rel="noopener noreferrer"
         className={className}
+        style={style}
         onClick={onNavigate}
       >
         <FileIcon className="mt-0.5 h-4 w-4 shrink-0 text-wheat-500" />
@@ -34,13 +38,13 @@ export function NavLink({
   }
   if (item.href) {
     return (
-      <Link href={item.href} className={className} onClick={onNavigate}>
+      <Link href={item.href} className={className} style={style} onClick={onNavigate}>
         <span className="min-w-0 flex-1">{content}</span>
       </Link>
     );
   }
   return (
-    <span className={`${className} cursor-default`} title="Not yet available">
+    <span className={`${className} cursor-default`} style={style} title="Not yet available">
       <span className="min-w-0 flex-1">{content}</span>
     </span>
   );

@@ -114,3 +114,32 @@ export const contact = {
     },
   ],
 };
+
+/** Announcements shown in the notice bar and on the home page (all link to documents already on the site). */
+export const notices = [
+  {
+    label: "FINAL ELIGIBLE VOTERS LIST OF PCPA CORPORATE CLASS MEMBERS FOR THE YEAR 2026-2028",
+    href: "/docs/FINAL-ELIGIBLE-VOTERS-LIST-CORPORATE-2026-2028.pdf",
+    date: "24 Aug 2026",
+  },
+  {
+    label: "FINAL ELIGIBLE VOTERS LIST OF PCPA ASSOCIATE CLASS MEMBERS FOR THE YEAR 2026-28",
+    href: "/docs/FINAL-ELIGIBLE-VOTERS-LIST-ASSOCIATE-2026-2028.pdf",
+    date: "24 Aug 2026",
+  },
+  {
+    label: "Announcement Of Election Schedule 2026-2028",
+    href: "/docs/ANNOUNCEMENT-OF-ELECTION-SCHEDULE-PCPA-2026-2028.pdf",
+    date: "15 Jul 2026",
+  },
+  {
+    label: "Announcement of Election Commision 2026-2028",
+    href: "/docs/ANNOUNCEMENT-OF-ELECTION-COMMISSION-2026-2028.pdf",
+    date: "15 Jul 2026",
+  },
+  {
+    label: "Membership Form 2026-2027",
+    href: "/docs/MEMBERSHIP-APPLICATION-2026-2027.docx",
+    date: "Jan 2026",
+  },
+];

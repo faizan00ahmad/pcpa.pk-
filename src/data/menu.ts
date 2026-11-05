@@ -136,3 +136,23 @@ export function childrenOf(href: string, items: MenuItem[] = menu): MenuItem[] {
 export const docSections = menu.filter((m) =>
   m.children?.some((c) => c.file),
 ) as (MenuItem & { children: MenuItem[] })[];
+
+/** Ancestors of the page at `href` (outermost first), e.g. About Us › Minutes of the Meetings. */
+export function trailFor(href: string, items: MenuItem[] = menu, trail: MenuItem[] = []): MenuItem[] | null {
+  for (const i of items) {
+    if (i.href === href) return trail;
+    const found = trailFor(href, i.children ?? [], [...trail, i]);
+    if (found) return found;
+  }
+  return null;
+}
+
+/** The top-level menu section that contains `href` and has sub-items (used for the inner-page sidebar). */
+export function sectionFor(href: string): MenuItem | null {
+  for (const top of menu) {
+    if (!top.children?.length) continue;
+    const has = (i: MenuItem): boolean => i.href === href || !!i.children?.some(has);
+    if (has(top)) return top;
+  }
+  return null;
+}

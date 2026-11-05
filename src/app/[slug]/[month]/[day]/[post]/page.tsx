@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Arrow, Clock } from "@/components/Icons";
 import { PageHeader } from "@/components/PageHeader";
+import { T } from "@/components/T";
 import { news } from "@/data/site";
 
 export const dynamicParams = false;
@@ -31,9 +32,9 @@ export default async function Post({ params }: { params: Params }) {
 
   return (
     <>
-      <PageHeader title={post.title} eyebrow="News" />
+      <PageHeader title={post.title} eyebrow="News" trail={[{ label: "NEWS" }]} />
       <article className="mx-auto max-w-4xl px-4 py-14 sm:px-6">
-        <div className="relative aspect-[16/8] overflow-hidden rounded-3xl ring-1 ring-line">
+        <div className="relative aspect-[16/8] overflow-hidden rounded-lg ring-1 ring-line">
           <Image src={post.image} alt="" fill priority sizes="(min-width:896px) 896px, 100vw" className="object-cover" />
         </div>
         <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted">
@@ -49,13 +50,13 @@ export default async function Post({ params }: { params: Params }) {
         </div>
 
         <aside className="mt-16 border-t border-line pt-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-wheat-500">Related posts</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-wheat-500"><T>Related posts</T></p>
           <Link
             href={other.path}
-            className="group mt-4 flex items-center justify-between gap-4 rounded-2xl bg-white p-5 ring-1 ring-line transition hover:bg-forest-50"
+            className="group mt-4 flex items-center justify-between gap-4 rounded-lg bg-white p-5 ring-1 ring-line transition hover:bg-forest-50"
           >
             <span>
-              <span className="block text-lg font-semibold text-forest-900">{other.title}</span>
+              <span className="block text-lg font-semibold text-forest-900"><T>{other.title}</T></span>
               <span className="text-sm text-muted">{other.author} · {other.published}</span>
             </span>
             <Arrow className="h-5 w-5 shrink-0 text-forest-600 transition group-hover:translate-x-1" />

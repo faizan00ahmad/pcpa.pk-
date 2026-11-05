@@ -7,6 +7,7 @@ import type { MenuItem } from "@/data/menu";
 import { menu } from "@/data/menu";
 import { Chevron, Close } from "./Icons";
 import { NavLink } from "./NavLink";
+import { T } from "./T";
 
 function Node({
   item,
@@ -33,7 +34,7 @@ function Node({
 
   return (
     <li>
-      <div className="flex items-stretch gap-1" style={{ paddingLeft: depth * 14 }}>
+      <div className="flex items-stretch gap-1" style={{ paddingInlineStart: depth * 14 }}>
         <div className="min-w-0 flex-1">
           <NavLink item={item} className={row} onNavigate={close} />
         </div>
@@ -50,7 +51,7 @@ function Node({
         )}
       </div>
       {hasKids && open && (
-        <ul className="mt-0.5 space-y-0.5 border-l border-line ml-5">
+        <ul className="mt-0.5 space-y-0.5 border-s border-line ms-5">
           {item.children!.map((c) => (
             <Node key={c.label} item={c} depth={depth > 0 ? 1 : 0} pathname={pathname} close={close} />
           ))}
@@ -85,8 +86,8 @@ export function SideDrawer({ open, onClose }: { open: boolean; onClose: () => vo
       <aside
         role="dialog"
         aria-label="Site menu"
-        className={`absolute right-0 top-0 flex h-full w-[min(92vw,400px)] flex-col bg-white shadow-2xl transition-transform duration-300 ease-out ${
-          open ? "translate-x-0" : "translate-x-full"
+        className={`absolute end-0 top-0 flex h-full w-[min(92vw,400px)] flex-col bg-white shadow-2xl transition-transform duration-300 ease-out ${
+          open ? "translate-x-0" : "translate-x-full rtl:-translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-4">
@@ -94,7 +95,7 @@ export function SideDrawer({ open, onClose }: { open: boolean; onClose: () => vo
             <Image src="/images/brand/favicon.png" alt="PCPA" width={44} height={44} className="h-11 w-11 object-contain" />
             <div className="leading-tight">
               <p className="font-display text-lg font-semibold text-forest-900">PCPA</p>
-              <p className="text-[11px] uppercase tracking-widest text-muted">Primary Menu</p>
+              <p className="text-[11px] uppercase tracking-widest text-muted"><T>Primary Menu</T></p>
             </div>
           </div>
           <button
@@ -114,7 +115,7 @@ export function SideDrawer({ open, onClose }: { open: boolean; onClose: () => vo
           </ul>
         </nav>
         <div className="border-t border-line bg-forest-50 px-5 py-4 text-xs text-muted">
-          Pakistan Crop Protection Association · Multan
+          <T>Pakistan Crop Protection Association</T> · <T>Multan</T>
         </div>
       </aside>
     </div>
