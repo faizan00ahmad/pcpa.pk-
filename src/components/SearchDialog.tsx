@@ -104,7 +104,7 @@ export function SearchDialog() {
                     <span className="block text-sm font-semibold leading-snug text-forest-900">{t(r.title)}</span>
                     {r.hint && <span className="mt-0.5 block truncate text-xs text-muted">{r.hint}</span>}
                   </span>
-                  <span className="mt-0.5 shrink-0 rounded bg-wheat-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-wheat-500">
+                  <span className="mt-0.5 shrink-0 rounded bg-wheat-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-gold-700">
                     {t(r.kind)}
                   </span>
                 </button>

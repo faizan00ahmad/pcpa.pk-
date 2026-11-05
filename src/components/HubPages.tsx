@@ -26,7 +26,7 @@ function DocCard({ item, index }: { item: MenuItem; index: number }) {
         rel="noopener noreferrer"
         className="group flex h-full items-start gap-4 rounded-lg bg-white p-5 ring-1 ring-line transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-forest-950/10"
       >
-        <span className="grid h-12 w-12 shrink-0 place-items-center rounded bg-forest-50 text-wheat-500 transition group-hover:bg-forest-800 group-hover:text-white">
+        <span className="grid h-12 w-12 shrink-0 place-items-center rounded bg-forest-50 text-gold-700 transition group-hover:bg-forest-800 group-hover:text-white">
           <FileIcon />
         </span>
         <span className="min-w-0 flex-1">

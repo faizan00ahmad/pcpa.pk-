@@ -40,7 +40,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <>
           <div className="mb-8">
             <h2 className="text-2xl font-semibold text-forest-900 sm:text-3xl">{committeeTitle}</h2>
-            <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-wheat-500">{committeeSubtitle}</p>
+            <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-gold-700">{committeeSubtitle}</p>
           </div>
           <CommitteeTable rows={committee} />
         </>

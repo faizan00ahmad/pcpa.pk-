@@ -6,7 +6,7 @@ export function PdfViewer({ src, title }: { src: string; title: string }) {
     <div className="overflow-hidden rounded-lg border border-line bg-white shadow-sm">
       <div className="flex items-center justify-between gap-3 border-b border-line bg-forest-50 px-4 py-3">
         <div className="flex min-w-0 items-center gap-2.5 text-forest-900">
-          <FileIcon className="h-5 w-5 shrink-0 text-wheat-500" />
+          <FileIcon className="h-5 w-5 shrink-0 text-gold-700" />
           <span className="truncate text-sm font-semibold">{title}</span>
         </div>
         <a

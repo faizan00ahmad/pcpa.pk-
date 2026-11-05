@@ -36,7 +36,7 @@ export function Footer() {
             <p className="text-2xl font-extrabold leading-tight sm:text-3xl">
               <T>Join the Pakistan Crop Protection Association</T>
             </p>
-            <p className="mt-1.5 text-forest-950/75">
+            <p className="mt-1.5 font-medium text-forest-950">
               <T>Download the 2026-2027 membership form or get in touch with the secretariat.</T>
             </p>
           </div>
@@ -74,7 +74,7 @@ export function Footer() {
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/70">
               <T>A member association supporting the growth of Pakistan's agriculture sector, headquartered in Multan.</T>
             </p>
-            <ul className="mt-5 flex items-center gap-2">
+            <ul className="mt-5 flex flex-wrap items-center gap-2">
               {site.socials.map((s) => {
                 const Icon = socialIcons[s];
                 return (
@@ -94,9 +94,9 @@ export function Footer() {
           </div>
 
           <nav aria-label="Quick links">
-            <h3 className={head}>
+            <h2 className={head}>
               <T>Quick links</T>
-            </h3>
+            </h2>
             <ul className="space-y-2.5">
               {quick.map((l) => (
                 <li key={l.href}>
@@ -109,9 +109,9 @@ export function Footer() {
           </nav>
 
           <nav aria-label="About">
-            <h3 className={head}>
+            <h2 className={head}>
               <T>About Us</T>
-            </h3>
+            </h2>
             <ul className="space-y-2.5">
               {about.map((l) => (
                 <li key={l.href}>
@@ -124,9 +124,9 @@ export function Footer() {
           </nav>
 
           <div>
-            <h3 className={head}>
+            <h2 className={head}>
               <T>Our offices</T>
-            </h3>
+            </h2>
             <div className="space-y-5 text-sm text-white/75">
               <div>
                 <p className="font-semibold text-white">

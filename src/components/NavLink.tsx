@@ -28,7 +28,7 @@ export function NavLink({
         style={style}
         onClick={onNavigate}
       >
-        <FileIcon className="mt-0.5 h-4 w-4 shrink-0 text-wheat-500" />
+        <FileIcon className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" />
         <span className="min-w-0 flex-1">{content}</span>
         <span className="shrink-0 rounded bg-forest-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-forest-700">
           {item.file.kind}

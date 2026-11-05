@@ -124,7 +124,7 @@ function ClassBadge({ v }: { v: string }) {
   return (
     <span
       className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-        corp ? "bg-forest-100 text-forest-800" : "bg-wheat-100 text-wheat-500"
+        corp ? "bg-forest-100 text-forest-800" : "bg-wheat-100 text-gold-700"
       }`}
     >
       {v}

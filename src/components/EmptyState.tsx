@@ -17,7 +17,7 @@ export function EmptyState({ title, children }: { title: string; children?: Menu
       </p>
       {links.length > 0 && (
         <div className="mt-10 text-start">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-wheat-500"><T>In this section</T></p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-700"><T>In this section</T></p>
           <ul className="mt-3 divide-y divide-line overflow-hidden rounded border border-line">
             {links.map((l) => (
               <li key={l.href}>

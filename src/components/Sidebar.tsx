@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useLang } from "./LanguageProvider";
 import type { MenuItem } from "@/data/menu";
 import { NavLink } from "./NavLink";
 import { T } from "./T";
@@ -32,6 +33,7 @@ function Node({ item, depth, pathname }: { item: MenuItem; depth: number; pathna
 /** Left sub-menu for inner pages: the current section's full tree with the active page marked. */
 export function Sidebar({ section }: { section: MenuItem }) {
   const pathname = usePathname();
+  const { t } = useLang();
 
   const tree = (
     <ul className="divide-y divide-line">
@@ -52,7 +54,7 @@ export function Sidebar({ section }: { section: MenuItem }) {
       </details>
 
       {/* Desktop */}
-      <aside className="hidden lg:block" aria-label="In this section">
+      <aside className="hidden lg:block" aria-label={t("In this section")}>
         <div className="sticky top-20 overflow-hidden rounded border border-line bg-white shadow-sm">
           <h2 className="bg-forest-900 px-4 py-3.5 text-sm font-bold uppercase tracking-wider text-white">
             <T>{section.label}</T>

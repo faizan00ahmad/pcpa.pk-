@@ -81,7 +81,7 @@ function MegaMenu({ item }: { item: MenuItem }) {
         <div className="grid gap-6 md:grid-cols-3">
           {aboutColumns.map((col) => (
             <div key={col.title}>
-              <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-wheat-500">
+              <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-gold-700">
                 <T>{col.title}</T>
               </p>
               <Tree items={kids.filter((k) => col.labels.includes(k.label))} />
@@ -133,7 +133,7 @@ export function Header() {
                   پاکستان کراپ پروٹیکشن ایسوسی ایشن
                 </span>
               )}
-              <span className="mt-1 hidden text-[11px] font-semibold uppercase tracking-[0.22em] text-wheat-500 sm:block">
+              <span className="mt-1 hidden text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-700 sm:block">
                 <T>PCPA · Multan</T>
               </span>
             </span>

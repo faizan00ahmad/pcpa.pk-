@@ -216,6 +216,8 @@ export const ur: Record<string, string> = {
   "Name *": "نام *",
   "Email *": "ای میل *",
   Subject: "موضوع",
+  Name: "نام",
+  Email: "ای میل",
   "Your message": "آپ کا پیغام",
   Submit: "جمع کروائیں",
 

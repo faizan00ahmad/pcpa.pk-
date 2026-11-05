@@ -41,7 +41,7 @@ const about = [
 function SectionHead({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <Reveal>
-      <p className="text-xs font-bold uppercase tracking-[0.25em] text-wheat-500">
+      <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold-700">
         <T>{eyebrow}</T>
       </p>
       <h2 className="mt-3 text-3xl text-forest-900 sm:text-4xl">
@@ -112,7 +112,7 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <Reveal className="grid items-start gap-10 lg:grid-cols-[1fr_2fr]">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-wheat-500">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold-700">
               <T>Pakistan Crop Protection Association</T>
             </p>
             <h2 className="mt-4 text-4xl text-forest-900 sm:text-5xl">
@@ -150,7 +150,7 @@ export default function Home() {
                   </div>
                   <div className="flex-1 border-x border-b border-line bg-white p-4 text-center">
                     <h3 className="text-lg leading-snug text-forest-900">{l.name}</h3>
-                    <p className="mt-1 text-sm font-semibold text-wheat-500">
+                    <p className="mt-1 text-sm font-semibold text-gold-700">
                       <T>{l.title}</T>
                     </p>
                   </div>
@@ -199,7 +199,7 @@ export default function Home() {
                   href={a.href}
                   className="grain group relative flex h-full min-h-48 flex-col justify-between overflow-hidden rounded-lg bg-forest-900 p-8 text-white transition hover:-translate-y-1 hover:bg-forest-800 hover:shadow-xl hover:shadow-forest-950/20"
                 >
-                  <span className="font-display text-6xl font-extrabold text-white/10 transition group-hover:text-wheat-400/30">{a.n}</span>
+                  <span aria-hidden="true" className="font-display text-6xl font-extrabold text-white/10 transition group-hover:text-wheat-400/30">{a.n}</span>
                   <span className="mt-10 flex items-end justify-between gap-4">
                     <span className="font-display text-3xl font-bold">
                       <T>{a.label}</T>

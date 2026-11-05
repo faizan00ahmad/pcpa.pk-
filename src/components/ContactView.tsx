@@ -23,7 +23,7 @@ function PersonCard({ p }: { p: Person }) {
   return (
     <div className="rounded bg-forest-50 p-5">
       <p className="font-display text-xl font-semibold text-forest-900">{p.name}</p>
-      <p className="text-sm font-medium text-wheat-500"><T>{p.role}</T></p>
+      <p className="text-sm font-medium text-gold-700"><T>{p.role}</T></p>
       {p.org && <p className="text-sm text-muted"><T>{p.org}</T></p>}
       <ul className="mt-4 space-y-2.5 text-sm">
         {p.address && (
@@ -92,10 +92,10 @@ export function ContactView() {
         <form onSubmit={onSubmit} className="rounded-lg bg-forest-900 p-6 text-white sm:p-8" aria-label="Contact form">
           <h3 className="font-display text-2xl font-semibold"><T>Send us a message</T></h3>
           <div className="mt-6 space-y-4">
-            <input className={`${field} text-ink`} name="name" required placeholder={t("Name *")} aria-label="Name" />
-            <input className={`${field} text-ink`} name="email" type="email" required placeholder={t("Email *")} aria-label="Email" />
-            <input className={`${field} text-ink`} name="subject" placeholder={t("Subject")} aria-label="Subject" />
-            <textarea className={`${field} min-h-36 text-ink`} name="message" placeholder={t("Your message")} aria-label="Your message" maxLength={2000} />
+            <input className={`${field} text-ink`} name="name" required placeholder={t("Name *")} aria-label={t("Name")} />
+            <input className={`${field} text-ink`} name="email" type="email" required placeholder={t("Email *")} aria-label={t("Email")} />
+            <input className={`${field} text-ink`} name="subject" placeholder={t("Subject")} aria-label={t("Subject")} />
+            <textarea className={`${field} min-h-36 text-ink`} name="message" placeholder={t("Your message")} aria-label={t("Your message")} maxLength={2000} />
           </div>
           <button
             type="submit"

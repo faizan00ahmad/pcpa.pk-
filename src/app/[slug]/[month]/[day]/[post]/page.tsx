@@ -50,7 +50,7 @@ export default async function Post({ params }: { params: Params }) {
         </div>
 
         <aside className="mt-16 border-t border-line pt-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-wheat-500"><T>Related posts</T></p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-700"><T>Related posts</T></p>
           <Link
             href={other.path}
             className="group mt-4 flex items-center justify-between gap-4 rounded-lg bg-white p-5 ring-1 ring-line transition hover:bg-forest-50"

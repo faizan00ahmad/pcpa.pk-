@@ -13,6 +13,8 @@
   --color-wheat-500: #b8962e;
   --color-wheat-400: #d4b24c;
   --color-wheat-100: #f3ebd0;
+  /* Gold for small text on light surfaces: 5.0:1+ on white, cream, forest-50 and wheat-100 */
+  --color-gold-700: #7a6010;
   --color-cream: #f4f6f4;
   --color-ink: #13201a;
   --color-muted: #55655b;
@@ -60,7 +62,7 @@ html[data-contrast="high"] {
   --color-line: #000000;
   --color-forest-50: #ffffff;
   --color-forest-100: #e6e6e6;
-  --color-wheat-500: #7a5c00;
+  --color-gold-700: #5a4500;
   --color-wheat-400: #ffd84d;
   --color-forest-600: #004d1f;
 }
