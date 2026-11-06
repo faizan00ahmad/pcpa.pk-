@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Nastaliq_Urdu } from "next/font/google";
+import { Inter, Inter_Tight, Noto_Nastaliq_Urdu } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { LanguageProvider } from "@/components/LanguageProvider";
+import { PromoBanner } from "@/components/PromoBanner";
 import { SearchDialog } from "@/components/SearchDialog";
 import { T } from "@/components/T";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap", weight: ["300", "400", "500", "600", "700", "800"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const tight = Inter_Tight({ subsets: ["latin"], variable: "--font-tight", display: "swap", weight: ["600", "700", "800"] });
 const urdu = Noto_Nastaliq_Urdu({ subsets: ["arabic"], variable: "--font-urdu", display: "swap" });
 
 export const metadata: Metadata = {
@@ -20,7 +22,7 @@ const initScript = `try{var d=document.documentElement,s=localStorage;var th=s.g
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" dir="ltr" data-theme="light" className={`${inter.variable} ${urdu.variable}`} suppressHydrationWarning>
+    <html lang="en" dir="ltr" data-theme="light" className={`${inter.variable} ${tight.variable} ${urdu.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: initScript }} />
       </head>
@@ -29,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <a href="#main" className="skip-link">
             <T>Skip to main content</T>
           </a>
+          <PromoBanner />
           <Header />
           <main id="main" tabIndex={-1} className="outline-none">
             {children}

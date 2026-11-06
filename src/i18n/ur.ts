@@ -12,6 +12,11 @@ export const ur: Record<string, string> = {
   "@2026 - PCPA. All Right Reserved.": "© 2026 - پی سی پی اے۔ جملہ حقوق محفوظ ہیں۔",
 
   // Utility bar / tools
+  Appearance: "ظاہری شکل",
+  Light: "روشن",
+  Dark: "گہرا",
+  Off: "بند",
+  On: "آن",
   "Skip to main content": "مرکزی مواد پر جائیں",
   "Text size": "متن کا سائز",
   "Decrease text size": "متن چھوٹا کریں",

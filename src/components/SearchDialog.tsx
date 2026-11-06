@@ -4,9 +4,18 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { searchSite, type SearchEntry } from "@/data/searchIndex";
 import { useLang } from "./LanguageProvider";
-import { Close, FileIcon, Search } from "./Icons";
+import { Search } from "./Icons";
 
 export const OPEN_SEARCH_EVENT = "pcpa:search";
+
+/** Nav icon that opens the search overlay. */
+export function SearchDialogOpen({ children, label }: { children: React.ReactNode; label: string }) {
+  return (
+    <button type="button" className="tool-btn" aria-label={label} title={`${label} (Ctrl K)`} onClick={() => window.dispatchEvent(new Event(OPEN_SEARCH_EVENT))}>
+      {children}
+    </button>
+  );
+}
 
 export function SearchDialog() {
   const { t } = useLang();
@@ -57,11 +66,14 @@ export function SearchDialog() {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[90] flex items-start justify-center px-4 pt-[10vh]" role="dialog" aria-modal="true" aria-label={t("Search")}>
-      <div className="absolute inset-0 bg-forest-950/70 backdrop-blur-sm" onClick={() => setOpen(false)} />
-      <div className="fade-up relative w-full max-w-2xl overflow-hidden rounded-lg bg-white shadow-2xl ring-1 ring-line">
-        <div className="flex items-center gap-3 border-b border-line px-4">
-          <Search className="h-5 w-5 shrink-0 text-forest-700" />
+    <div className="fixed inset-0 z-[500] flex items-start justify-center px-4 pt-[9vh]" role="dialog" aria-modal="true" aria-label={t("Search")}>
+      <div className="absolute inset-0" style={{ background: "var(--scrim)", backdropFilter: "blur(14px)" }} onClick={() => setOpen(false)} />
+      <div
+        className="fade-up relative w-full overflow-hidden"
+        style={{ maxWidth: 740, background: "var(--bg)", borderRadius: 28, boxShadow: "0 40px 100px rgba(0,0,0,.35)", border: "1px solid var(--line)" }}
+      >
+        <div className="flex items-center gap-4 px-6" style={{ borderBottom: "1px solid var(--line)" }}>
+          <Search className="h-6 w-6 shrink-0" style={{ color: "var(--fg-dim)" }} />
           <input
             ref={input}
             value={q}
@@ -79,32 +91,45 @@ export function SearchDialog() {
             }}
             placeholder={t("Search pages and documents…")}
             aria-label={t("Search")}
-            className="h-14 flex-1 bg-transparent text-base text-ink outline-none placeholder:text-muted/70"
+            className="h-[72px] flex-1 bg-transparent outline-none"
+            style={{ fontSize: 24, fontWeight: 500, letterSpacing: "-0.02em", color: "var(--fg)" }}
           />
-          <button type="button" onClick={() => setOpen(false)} aria-label={t("Close")} className="grid h-8 w-8 place-items-center rounded text-muted hover:bg-forest-50">
-            <Close className="h-4 w-4" />
+          <button type="button" onClick={() => setOpen(false)} className="tool-btn" aria-label={t("Close")}>
+            Esc
           </button>
         </div>
-        <div className="max-h-[55vh] overflow-y-auto">
-          {!q.trim() && <p className="px-5 py-8 text-center text-sm text-muted">{t("Type to search")} — Election, Seed Act, Membership…</p>}
-          {q.trim() && results.length === 0 && <p className="px-5 py-8 text-center text-sm text-muted">{t("No results found")}</p>}
-          <ul>
+        <div className="max-h-[56vh] overflow-y-auto">
+          {!q.trim() && (
+            <p className="px-6 py-10 text-center" style={{ color: "var(--fg-dim)" }}>
+              {t("Type to search")} — Election, Seed Act, Membership…
+            </p>
+          )}
+          {q.trim() && results.length === 0 && (
+            <p className="px-6 py-10 text-center" style={{ color: "var(--fg-dim)" }}>
+              {t("No results found")}
+            </p>
+          )}
+          <ul className="p-2">
             {results.map((r, i) => (
               <li key={`${r.kind}-${r.href}-${r.title}`}>
                 <button
                   type="button"
                   onMouseEnter={() => setActive(i)}
                   onClick={() => go(r)}
-                  className={`flex w-full items-start gap-3 px-5 py-3 text-start transition ${i === active ? "bg-forest-50" : ""}`}
+                  className="flex w-full items-center gap-4 px-4 py-3 text-start"
+                  style={{ borderRadius: 16, background: i === active ? "var(--bg-alt)" : "transparent" }}
                 >
-                  <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded bg-forest-800 text-white">
-                    {r.kind === "Document" ? <FileIcon className="h-4 w-4" /> : <Search className="h-4 w-4" />}
-                  </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block text-sm font-semibold leading-snug text-forest-900">{t(r.title)}</span>
-                    {r.hint && <span className="mt-0.5 block truncate text-xs text-muted">{r.hint}</span>}
+                    <span className="block truncate" style={{ fontSize: 17, fontWeight: 600, letterSpacing: "-0.015em" }}>
+                      {t(r.title)}
+                    </span>
+                    {r.hint && (
+                      <span className="mt-0.5 block truncate" style={{ fontSize: 13, color: "var(--fg-dim)" }}>
+                        {r.hint}
+                      </span>
+                    )}
                   </span>
-                  <span className="mt-0.5 shrink-0 rounded bg-wheat-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-wheat-500">
+                  <span className="shrink-0" style={{ fontSize: 12, fontWeight: 600, color: "var(--fg-dim)", background: "var(--line)", padding: "3px 10px", borderRadius: 99 }}>
                     {t(r.kind)}
                   </span>
                 </button>

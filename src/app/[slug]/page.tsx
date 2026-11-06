@@ -12,6 +12,7 @@ import { committee, committeeSubtitle, committeeTitle } from "@/data/committee";
 import { childrenOf, flattenPages } from "@/data/menu";
 
 const pages = flattenPages();
+const wideSlugs = ["central-executive-committee", "contact", "office-bearers", "document-archive"];
 const find = (slug: string) => pages.find((p) => p.href === `/${slug}`);
 
 export const dynamicParams = false;
@@ -72,7 +73,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <PageLayout href={page.href} title={page.label}>
+    <PageLayout href={page.href} title={page.label} wide={wideSlugs.includes(slug)}>
       {body}
     </PageLayout>
   );

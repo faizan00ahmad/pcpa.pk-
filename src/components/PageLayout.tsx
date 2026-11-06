@@ -1,19 +1,21 @@
 import { sectionFor, trailFor } from "@/data/menu";
+import { LocalNav } from "./LocalNav";
 import { PageHeader, type Crumb } from "./PageHeader";
-import { Sidebar } from "./Sidebar";
 
-/** Inner-page frame: hero banner + breadcrumb, then (when the page belongs to a menu section) a sticky sub-menu card. */
+/** Inner-page frame: optional sticky local nav, big title block, then the content (narrow or wide). */
 export function PageLayout({
   href,
   title,
   eyebrow,
   trail,
+  wide = false,
   children,
 }: {
   href?: string;
   title: string;
   eyebrow?: string;
   trail?: Crumb[];
+  wide?: boolean;
   children: React.ReactNode;
 }) {
   const section = href ? sectionFor(href) : null;
@@ -22,17 +24,9 @@ export function PageLayout({
 
   return (
     <>
+      {section && <LocalNav section={section} />}
       <PageHeader title={title} eyebrow={eyebrow} trail={crumbs} />
-      <div className="container page-shell">
-        {section ? (
-          <div className="page-grid">
-            <Sidebar section={section} />
-            <div className="min-w-0">{children}</div>
-          </div>
-        ) : (
-          <div className="min-w-0">{children}</div>
-        )}
-      </div>
+      <div className={`${wide ? "wrap" : "narrow"} page-body`}>{children}</div>
     </>
   );
 }

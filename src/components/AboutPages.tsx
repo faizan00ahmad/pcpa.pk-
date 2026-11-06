@@ -33,7 +33,7 @@ const pillars = [
 
 function Lead({ children }: { children: string }) {
   return (
-    <p className="border-wheat-400 text-xl leading-relaxed text-ink/85 sm:text-2xl ltr:border-l-4 ltr:pl-6 rtl:border-r-4 rtl:pr-6">
+    <p className="text-2xl font-semibold leading-snug tracking-tight text-ink sm:text-[32px]">
       <T>{children}</T>
     </p>
   );
@@ -43,7 +43,7 @@ function Pillars() {
   return (
     <CardCarousel label="What guides us" itemClass="w-[82%] sm:w-[46%] lg:w-[31%] xl:w-[23.5%]">
       {pillars.map((p) => (
-        <div key={p.title} className="h-full rounded-lg border border-line border-t-4 border-t-forest-800 bg-white p-7 transition hover:-translate-y-1 hover:border-t-wheat-500 hover:shadow-lg hover:shadow-forest-950/10">
+        <div key={p.title} className="h-full rounded-[24px] border border-transparent bg-white p-7 transition hover:-translate-y-1 hover:border-t-wheat-500 hover:shadow-lg hover:shadow-forest-950/10">
           <span className="grid h-11 w-11 place-items-center rounded bg-forest-50 text-forest-700">
             <Leaf />
           </span>
@@ -61,7 +61,7 @@ function Pillars() {
 
 function Statement({ label, children }: { label: string; children: string }) {
   return (
-    <div className="grain relative overflow-hidden rounded-lg bg-forest-900 p-8 text-white sm:p-12">
+    <div className="grain relative overflow-hidden rounded-[28px] bg-forest-900 p-8 text-white sm:p-12">
       <Sprout className="absolute -top-6 h-40 w-40 text-white/5 ltr:-right-6 rtl:-left-6" />
       <p className="text-xs font-bold uppercase tracking-[0.25em] text-wheat-400">
         <T>{label}</T>
@@ -154,7 +154,7 @@ export function AboutContent() {
       <section>
         <CardCarousel label="About PCPA" itemClass="w-[84%] sm:w-[48%] lg:w-[32%]">
           {cards.map((c) => (
-            <div key={c.t} className="h-full rounded-lg border border-line border-t-4 border-t-forest-800 bg-white p-7">
+            <div key={c.t} className="h-full rounded-[24px] border border-transparent bg-white p-7">
               <h2 className="text-xl text-forest-900">
                 <T>{c.t}</T>
               </h2>
@@ -205,7 +205,7 @@ export function AboutContent() {
         </ul>
       </section>
 
-      <section className="rounded-[20px] bg-forest-900 p-8 text-white sm:p-10">
+      <section className="rounded-[28px] bg-forest-900 p-8 text-white sm:p-10">
         <h2 className="text-2xl">
           <T>Get in touch</T>
         </h2>
